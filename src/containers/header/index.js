@@ -3,7 +3,8 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import { Link } from 'react-router-dom';
-
+import FontIcon from 'material-ui/FontIcon';
+import { blue500, red500, greenA200 } from 'material-ui/styles/colors';
 
 /**
  * A simple example of `AppBar` with an icon on the right.
@@ -23,7 +24,11 @@ class Header extends React.Component {
     handleClose() { this.setState({ open: false }); }
 
     render() {
+        const iconStyles = {
+            marginRight: 24,
+        };
         return (
+
             <section>
                 <AppBar
                     title="Title"
@@ -31,18 +36,26 @@ class Header extends React.Component {
                     onLeftIconButtonClick={this.handleToggle} />
                 <Drawer
                     docked={false}
-                    width={200}
+                    width={'25%'}
                     open={this.state.open}
                     onRequestChange={(open) => this.setState({ open })}>
 
 
-                    <Link key={1} to=''><MenuItem>JOOJ}</MenuItem></Link>
+                    <Link key={1} to=''>
+                        <FontIcon
+                            className="muidocs-icon-action-home"
+                            style={iconStyles}
+                            color={red500}
+                            hoverColor={greenA200}
+                        />
+                        <MenuItem> new </MenuItem>
+                    </Link>
                     <Link key={2} to='about-us'><MenuItem>JOOJ}</MenuItem></Link>
 
 
                     {/* {menuItems.map((item, index) => <Link key={index} href={item.url}><MenuItem>{item.title}</MenuItem></Link>)} */}
                 </Drawer>
-            </section>
+            </section >
         )
     }
 }
